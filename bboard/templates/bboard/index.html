@@ -1,10 +1,14 @@
 {% extends "layout/basic.html" %}
+{% block title %}Главная{% endblock %}
 {% block content %}
+<!--<h2>Рубрика :: {{ current_rubric.name }}</h2>-->
 {% for bb in bbs %}
 <div>
     <h2>{{ bb.title }}</h2>
+    <p>Действие: {{ bb.get_kind_display }}</p>
+    <!--здесь метод вытаскивает действия из кортежей-->
     <p>{{ bb.content }}</p>
-    <p><a href="{% url 'by_rubric' bb.rubric.pk %}">{{ bb.rubric.name }}</a></p>
+    <p>{{ bb.price }} р.</p>
     <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
 </div>
 {% endfor %}
