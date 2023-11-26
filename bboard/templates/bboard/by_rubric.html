@@ -7,7 +7,7 @@
             <h2>Название объявления: {{ bb.title }}</h2>
             <p>Описание: {{ bb.content }}</p>
             <p>Цена: {{ bb.price }} р.</p>
-            <p>Действие: {{ bb.kind }}</p>
+            <p>Действие: {{ bb.get_kind_display }}</p>
             <p>Дата публикации: {{ bb.published|date:"d.m.Y H:i:s" }}</p>
         </div>
         {% endfor %}

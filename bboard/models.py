@@ -21,7 +21,8 @@ class Bb(models.Model):
     rubric = models.ForeignKey('Rubric', null=False, blank=False, verbose_name='Название Рубрики',
                                on_delete=models.PROTECT)
 
-    # создание списка действий в админке
+    # создание списка действий
+
     KINDS = (
         (None, 'Выберете действие'),
         ('s', 'куплю'),
@@ -30,6 +31,10 @@ class Bb(models.Model):
     )
 
     kind = models.CharField(max_length=1, choices=KINDS, default='s', verbose_name='Действие')
+
+    def get_kind_display(self):
+        return dict(self.KINDS).get(self.kind, '')
+
     class Meta:
         verbose_name = 'Объявление'
         verbose_name_plural = 'Объявления'
