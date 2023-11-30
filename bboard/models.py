@@ -11,6 +11,9 @@ class Rubric(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self): # добавил интернет-адрес модели --> в шаблоне смтори
+        return '/qwert/%s/' % self.pk
+
 
 # Create your models here.
 class Bb(models.Model):

@@ -19,8 +19,10 @@
     <a href="{% url 'add_rubric' %}">Добавить рубрику</a>
     <a href="{% url 'add' %}">Добавить объявление</a>
     {% for rubric in rubrics %}
-    <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-    {% endfor%}
+        {#        здесь взяли рубрику и применил функцию из нашей модели#}
+        <a href='{{ rubric.get_absolute_url }}'>{{ rubric.name }}</a>
+        {#        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>#}
+    {% endfor %}
 </nav>
 <section>
     {% block content %}
