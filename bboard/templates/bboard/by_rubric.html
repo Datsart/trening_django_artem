@@ -1,14 +1,17 @@
 {% extends "layout/basic.html" %}
 {% block title %}{{ current_rubric.name }}{% endblock %}
 {% block content %}
-<h2>Рубрика :: {{ current_rubric.name }}</h2>
-{% for bb in bbs %}
+    <h2>Рубрика :: {{ current_rubric.name }}</h2>
+    {% for bb in bbs %}
         <div>
             <h2>Название объявления: {{ bb.title }}</h2>
             <p>Описание: {{ bb.content }}</p>
             <p>Цена: {{ bb.price }} р.</p>
             <p>Действие: {{ bb.get_kind_display }}</p>
             <p>Дата публикации: {{ bb.published|date:"d.m.Y H:i:s" }}</p>
+            {#        метод для вывода цены и названия в одном теге#}
+{#            <p>{{ bb.title_and_price }}</p>#}
+
         </div>
-        {% endfor %}
+    {% endfor %}
 {% endblock %}

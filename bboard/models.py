@@ -11,7 +11,7 @@ class Rubric(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self): # добавил интернет-адрес модели --> в шаблоне смтори
+    def get_absolute_url(self):  # добавил интернет-адрес модели --> в шаблоне смтори
         return '/qwert/%s/' % self.pk
 
 
@@ -45,3 +45,11 @@ class Bb(models.Model):
 
     def __str__(self):
         return self.title
+
+    def title_and_price(self):  # метод для вывода цены и названия в одном теге
+        if self.price:
+            return '%s - %i р.' % (self.title, self.price)
+        else:
+            return self.title
+
+    title_and_price.short_description = 'Название и цена'  # это надо добавить в админку для отображения
