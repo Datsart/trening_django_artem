@@ -1,4 +1,5 @@
 from django.db import models
+from django.core import validators
 
 
 class Rubric(models.Model):
@@ -11,14 +12,20 @@ class Rubric(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):  # добавил интернет-адрес модели --> в шаблоне смтори
+    def get_absolute_url(self):  # добавил интернет-адрес модели --> в шаблоне смотри
         return '/qwert/%s/' % self.pk
 
 
 # Create your models here.
 class Bb(models.Model):
-    title = models.CharField(max_length=50, verbose_name='Название объявления')
-    content = models.TextField(null=True, blank=True, verbose_name='Текст объявления')
+    title = models.CharField(max_length=50, verbose_name='Название объявления',
+                             validators=[validators.RegexValidator(regex='^.{4,}$')])
+    # валидатор на проверку - начинается и зканчивается строкой, минимум 4 символа
+
+    content = models.TextField(null=True, blank=True, verbose_name='Текст объявления', validators=[
+        validators.MinLengthValidator(3, message='Длина должна быть более 3х символов')])
+    # валидатор на минимум 3 символа
+
     price = models.PositiveIntegerField(null=True, blank=True, verbose_name='Цена')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации')
     rubric = models.ForeignKey('Rubric', null=False, blank=False, verbose_name='Название Рубрики',
