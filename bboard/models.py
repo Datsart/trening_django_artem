@@ -19,11 +19,12 @@ class Rubric(models.Model):
 # Create your models here.
 class Bb(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название объявления',
-                             validators=[validators.RegexValidator(regex='^.{4,}$')])
+                             validators=[validators.RegexValidator(regex='^.{4,}$')],
+                             error_messages={'invalid': 'Длина не менее 4х символов'})
     # валидатор на проверку - начинается и зканчивается строкой, минимум 4 символа
 
     content = models.TextField(null=True, blank=True, verbose_name='Текст объявления', validators=[
-        validators.MinLengthValidator(3, message='Длина должна быть более 3х символов')])
+        validators.MinLengthValidator(3, message='Длина не менее 3х символов')])
     # валидатор на минимум 3 символа
 
     price = models.PositiveIntegerField(null=True, blank=True, verbose_name='Цена')
