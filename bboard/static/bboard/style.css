@@ -1,21 +1,29 @@
-header.hl {
+/* Общие стили для заголовка */
+header h1 {
     font-size: 40pt;
     text-transform: uppercase;
     text-align: center;
-    background: url("man.jpg") left / auto 100% no-repeat;
 }
 
+/* Стили для фона заголовка с изображением */
+header {
+    background: url("bg.jpg") left / auto 100% no-repeat;
+}
+
+/* Стили для навигационного меню */
 nav {
-    font-size: 12pt;
+    font-size: 16pt; /* Пример значения, замените на нужное вам */
     width: 150px;
     float: left;
 }
 
+/* Стили для ссылок внутри навигационного меню */
 nav a {
     display: block;
     margin: 10px 0;
 }
 
+/* Стили для раздела (section) с отступом слева */
 section {
     margin-left: 170px;
 }

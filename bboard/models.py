@@ -4,7 +4,7 @@ from django.core import validators
 
 class Rubric(models.Model):
     name = models.CharField(max_length=50, db_index=True, verbose_name='Название Рубрики')
-
+    photo = models.ImageField(verbose_name='Фото', upload_to='photos')
     class Meta:
         verbose_name = 'Название Рубрики'
         verbose_name_plural = 'Названия Рубрик'
@@ -30,7 +30,7 @@ class Bb(models.Model):
     price = models.PositiveIntegerField(null=True, blank=True, verbose_name='Цена')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации')
     rubric = models.ForeignKey('Rubric', null=False, blank=False, verbose_name='Название Рубрики',
-                               on_delete=models.PROTECT)
+                               on_delete=models.PROTECT, related_name='entries')
 
     # создание списка действий
 
