@@ -14,8 +14,9 @@
     <h1>Объявления</h1>
 </header>
 <nav>
+    <a href="{% url 'admin:index' %}">Админка</a>
+    {# здесь index обозначает то что попадаем на главную страницу АДМИНКИ #}
     <a href="{% url 'index' %}">Главная</a>
-
     <a href="{% url 'add_rubric' %}">Добавить рубрику</a>
     <a href="{% url 'add' %}">Добавить объявление</a>
     {% for rubric in rubrics %}

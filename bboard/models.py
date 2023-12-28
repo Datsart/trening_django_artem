@@ -4,7 +4,7 @@ from django.core import validators
 
 class Rubric(models.Model):
     name = models.CharField(max_length=50, db_index=True, verbose_name='Название Рубрики')
-    photo = models.ImageField(verbose_name='Фото', upload_to='photos')
+
     class Meta:
         verbose_name = 'Название Рубрики'
         verbose_name_plural = 'Названия Рубрик'

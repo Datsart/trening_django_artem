@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 def index(request):
     bbs = Bb.objects.all()
     rubrics = Rubric.objects.all()
-    context = {'bbs': bbs, 'rubrics': rubrics}  # собради инфу
+    context = {'bbs': bbs, 'rubrics': rubrics}  # собрали инфу
     return render(request, 'bboard/index.html', context)  # здесь куда мы передали инфу
 
 
@@ -32,9 +32,10 @@ class BbCreateView(CreateView):
     # в скобках имя name из урлов
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs) # получили контекст швблона от базового класса
-        context['rubrics'] = Rubric.objects.all() # добавили в него рубрики
+        context = super().get_context_data(**kwargs)  # получили контекст швблона от базового класса
+        context['rubrics'] = Rubric.objects.all()  # добавили в него рубрики
         return context
+
 
 class RubricCreateView(CreateView):
     template_name = 'bboard/create_rubric.html'
@@ -44,6 +45,6 @@ class RubricCreateView(CreateView):
     # в скобках имя name из урлов
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs) # получили контекст швблона от базового класса
-        context['rubrics'] = Rubric.objects.all() # добавили в него рубрики
+        context = super().get_context_data(**kwargs)  # получили контекст швблона от базового класса
+        context['rubrics'] = Rubric.objects.all()  # добавили в него рубрики
         return context
